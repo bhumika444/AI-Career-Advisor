@@ -1,0 +1,6 @@
+streamlit
+openai
+pdfminer.six
+docx2txt
+python-dotenv
+textract

@@ -5,7 +5,7 @@ import re
 from pdfminer.high_level import extract_text as extract_pdf_text
 import docx2txt
 
-openai.api_key = st.secrets.get("OPENAI_API_KEY")
+client = OpenAI(api_key=st.secrets.get("OPENAI_API_KEY"))
 
 def extract_text_from_file(uploaded_file):
     filename = uploaded_file.name

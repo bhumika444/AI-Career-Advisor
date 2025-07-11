@@ -1,0 +1,14 @@
+compressed_rtf-1.0.7.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+compressed_rtf-1.0.7.dist-info/METADATA,sha256=gOMf_e0yRsIKb_QVpmGJN8AABg1PIu-PTFSR2opYx3Q,2435
+compressed_rtf-1.0.7.dist-info/RECORD,,
+compressed_rtf-1.0.7.dist-info/WHEEL,sha256=DK49LOLCYiurdXXOXwGJm6U4DkHkg4lcxjhqwRa0CP4,91
+compressed_rtf-1.0.7.dist-info/licenses/LICENSE,sha256=EEx62rWTNnsqBxB0MQWG4m46JTW__PVJGni7P6eya9w,1080
+compressed_rtf-1.0.7.dist-info/top_level.txt,sha256=4zLyAtj9fJpBPGkBjEmIWExVILYZcV01L6nzwWAFhsI,15
+compressed_rtf/__init__.py,sha256=_7UDT0QpB1DX38YkJ2ljxO15EVbcbv4NbsMGoem1KVc,432
+compressed_rtf/__pycache__/__init__.cpython-312.pyc,,
+compressed_rtf/__pycache__/__version__.cpython-312.pyc,,
+compressed_rtf/__pycache__/compressed_rtf.cpython-312.pyc,,
+compressed_rtf/__pycache__/crc32.cpython-312.pyc,,
+compressed_rtf/__version__.py,sha256=ad0WG2n07KxTsutnidG8M0YGHkSF4GITz6Ig8bruUTc,473
+compressed_rtf/compressed_rtf.py,sha256=-jhIsV9KTBHtS5VhetGNBax8I42ynkj9hoN-S1jjEwQ,8404
+compressed_rtf/crc32.py,sha256=yLGOJLSLHUkRrJz5iv6SPJVEbBz30x6qizksosz9zrc,3834

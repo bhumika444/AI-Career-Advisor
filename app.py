@@ -5,7 +5,7 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-openai.api_key = st.secrets["OPENAI_API_KEY"] or os.getenv("OPENAI_API_KEY")
+openai.api_key = st.secrets.get("OPENAI_API_KEY")
 
 def extract_skills(text):
     skills = re.findall(r'\b[A-Za-z\+\.#]{2,}\b', text)

@@ -1,11 +1,24 @@
 import streamlit as st
 import openai
-import re
 import os
-from dotenv import load_dotenv
-load_dotenv()
+import re
+from pdfminer.high_level import extract_text as extract_pdf_text
+import docx2txt
 
 openai.api_key = st.secrets.get("OPENAI_API_KEY")
+
+def extract_text_from_file(uploaded_file):
+    filename = uploaded_file.name
+    if filename.endswith(".pdf"):
+        with open("temp.pdf", "wb") as f:
+            f.write(uploaded_file.read())
+        return extract_pdf_text("temp.pdf")
+    elif filename.endswith(".docx"):
+        with open("temp.docx", "wb") as f:
+            f.write(uploaded_file.read())
+        return docx2txt.process("temp.docx")
+    else:
+        return ""
 
 def extract_skills(text):
     skills = re.findall(r'\b[A-Za-z\+\.#]{2,}\b', text)
@@ -13,20 +26,18 @@ def extract_skills(text):
 
 st.title("🤖 AI Career Advisor")
 
-resume = st.file_uploader("Upload your Resume (PDF/DOCX)", type=['pdf', 'docx'])
+resume = st.file_uploader("Upload your Resume (PDF or DOCX)", type=["pdf", "docx"])
 job_description = st.text_area("Paste the Job Description")
 
 if resume and job_description:
-    import textract
-
-    text = textract.process(resume).decode("utf-8")
+    text = extract_text_from_file(resume)
     resume_skills = extract_skills(text)
     jd_skills = extract_skills(job_description)
 
     matched = list(set(resume_skills) & set(jd_skills))
     missing = list(set(jd_skills) - set(resume_skills))
 
-    match_percent = round(len(matched) / len(jd_skills) * 100, 2)
+    match_percent = round(len(matched) / len(jd_skills) * 100, 2) if jd_skills else 0
 
     st.subheader("🔍 Skill Match Results")
     st.write(f"✅ **Match:** {match_percent}%")

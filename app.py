@@ -55,12 +55,10 @@ if resume and job_description:
         Focus on highlighting matching skills: {matched}, and express eagerness to learn: {missing}.
         """
 
-        client = OpenAI(api_key=openai.api_key)
-
-    with st.spinner("Generating..."):
-        response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": prompt}]
-    )
-    st.subheader("📄 Cover Letter")
-    st.write(response.choices[0].message.content)
+        with st.spinner("Generating..."):
+            response = client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[{"role": "user", "content": prompt}]
+            )
+            st.subheader("📄 Cover Letter")
+            st.write(response.choices[0].message.content)

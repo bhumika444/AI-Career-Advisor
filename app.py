@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 import os
 import re
 from pdfminer.high_level import extract_text as extract_pdf_text
@@ -55,10 +55,12 @@ if resume and job_description:
         Focus on highlighting matching skills: {matched}, and express eagerness to learn: {missing}.
         """
 
-        with st.spinner("Generating..."):
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=[{"role": "user", "content": prompt}]
-            )
-            st.subheader("📄 Cover Letter")
-            st.write(response['choices'][0]['message']['content'])
+        client = OpenAI(api_key=openai.api_key)
+
+    with st.spinner("Generating..."):
+        response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}]
+    )
+    st.subheader("📄 Cover Letter")
+    st.write(response.choices[0].message.content)
